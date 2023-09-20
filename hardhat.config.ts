@@ -10,12 +10,12 @@ const config: HardhatUserConfig = {
   networks: {
     'base-mainnet': {
       url: 'https://mainnet.base.org',
-      accounts: [process.env.WALLET_KEY as string],
+      accounts: [process.env.WALLET_KEY_PROD as string],
       gasPrice: 1000000000,
     },
     'base-goerli': {
       url: 'https://goerli.base.org',
-      accounts: [process.env.WALLET_KEY as string],
+      accounts: [process.env.WALLET_KEY_TEST as string],
       gasPrice: 1000000000,
     },
   },
