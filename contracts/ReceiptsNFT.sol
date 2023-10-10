@@ -47,7 +47,18 @@ contract ReceiptsNFT is ERC721Upgradeable, OwnableUpgradeable {
   }
 
   function burn(uint256 tokenId) external {
+    _requireMinted(tokenId);
+    require(super._isApprovedOrOwner(_msgSender(), tokenId), "not approved");
     _burn(tokenId);
+  }
+
+  function setTokenUri(uint256 tokenId, string calldata uri) external {
+    _requireMinted(tokenId);
+    require(
+      super._isApprovedOrOwner(_msgSender(), tokenId), 
+      "not approved"
+    );
+    customTokenUri[tokenId] = uri;
   }
 
   function setPrice(uint256 newPrice, address treasury) external onlyOwner {

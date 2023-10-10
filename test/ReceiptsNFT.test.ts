@@ -114,5 +114,24 @@ describe("ReceiptsNFT", function() {
       balance = await nft.balanceOf(minter.address)
       expect(balance).to.eq(0)
     })
+
+    it("reverts when not owner burns", async () => {
+      const tokenId = 1;
+      const [minter, hacker] = await ethers.getSigners();
+      const nft = await deployNft(minter);
+      await nft.connect(minter).mint(minter.address, "ipfs://something");
+      await expect(
+        nft.connect(hacker).burn(tokenId)
+      ).to.be.revertedWith("not approved"); 
+    })    
+
+    it("reverts when token not exists", async () => {
+      const tokenId = 1;
+      const [minter] = await ethers.getSigners();
+      const nft = await deployNft(minter);
+      await expect(
+        nft.connect(minter).burn(tokenId)
+      ).to.be.revertedWith("ERC721: invalid token ID"); 
+    })
   })
 });
