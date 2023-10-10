@@ -51,10 +51,12 @@ describe("ReceiptsNFT", function() {
     it("mints new token for free", async () => {
       const [deployer, minter] = await ethers.getSigners();
       const nft = await deployNft(deployer);
-      await nft.connect(minter).mint(minter.address, "ipfs://something/12");
+      await nft.connect(minter).mint(minter.address, "");
       const ownerOf = await nft.ownerOf(1); 
       expect(ownerOf).to.eq(minter.address);
-
+      await nft.connect(minter).setTokenUri(1, "ipfs://something/12");
+      const uri = await nft.tokenURI(1); 
+      expect(uri).to.eq("ipfs://something/12");
     })
 
     it("mints new token for when price is set", async () => {
