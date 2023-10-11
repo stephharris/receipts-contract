@@ -21,7 +21,8 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: {
-     "base-goerli": "PLACEHOLDER_STRING"
+      "base": "2PWUGXXFIBKACUNXF9MWP99G4DGUQARYHQ",
+      "base-goerli": "PLACEHOLDER_STRING"
     },
     customChains: [
       {
