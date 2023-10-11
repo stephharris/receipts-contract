@@ -24,3 +24,9 @@ npx hardhat verify --network base-goerli 0x2457A37603AcbD968b389f27eeA8955F4b3df
 ```shell
 npx hardhat verify --network base-mainnet 0x39d18BD615c5c8Dc1FD2E139B2dd6fcF4Ba27999
 ```
+## Setting Price for minting 
+- Go to explorer page of verified contract. For example: https://basescan.org/address/0x39d18BD615c5c8Dc1FD2E139B2dd6fcF4Ba27999
+- Click Contract > Write as Proxy 
+- Connect wallet that is owner / deployer of contract 
+- Click "setPrice" 
+- Specify new price (in WEI) and treasury addresss 
