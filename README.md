@@ -10,6 +10,7 @@ npx hardhat test
 ```
 
 ## Deployment
+Before running below scripts providing private keys in `.env` file is necessary. Check `.env.example` for reference. 
 ```shell
 npx hardhat run scripts/deploy.ts --network base-goerli
 ```
